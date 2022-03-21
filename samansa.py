@@ -20,14 +20,15 @@ def autologin():
 
     driver = webdriver.Chrome(executable_path="/Users/tooyamaasuka/Downloads/chromedriver 2")
     url = "https://samansa.jp.auth0.com/login?state=hKFo2SA3SG1SR1hRWktjY2w0NUZ1N2w3VlpsMlEtNnBpQmN3NKFupWxvZ2luo3RpZNkgTkJNajdpaWVsaVJMdnVHeWlxX1lDZ3h5SFBDUnM0OGijY2lk2SBocjdLWXZsREx6UFdVanF3N1JNZ0c5emJhN004NFJ0Qw&client=hr7KYvlDLzPWUjqw7RMgG9zba7M84RtC&protocol=oauth2&response_type=token&access_type=&redirect_uri=https%3A%2F%2Fsamansa.com%2Fauth%2Fsigned-in&scope=openid%20profile%20email&code_challenge_method=implicit&audience=https%3A%2F%2Fsamansa.jp.auth0.com%2Fapi%2Fv2%2F&nonce=cS3omJHrmi"
+    
     driver.get(url)
     time.sleep(5)
 
     login_id = driver.find_element_by_xpath("/html/body/div/div[3]/input[1]")
     login_pw = driver.find_element_by_xpath("/html/body/div/div[3]/input[2]")
     time.sleep(5)
-    userid = "XXX"
-    userpasswd = "XXX"
+    userid = "XX"
+    userpasswd = "XX"
 
     login_id.send_keys(userid)
     login_pw.send_keys(userpasswd)
@@ -44,10 +45,13 @@ def autologin():
     popular.click()
     time.sleep(5)
     for i in range(1,49):
+        
         video = driver.find_element_by_xpath("/html/body/div/div/div/div/main/div/div/div/div/div/div/div["+ str(i) + "]/div/a")
-
+        driver.execute_script("arguments[0].scrollIntoView();", video)
+        time.sleep(3)
         video.click()
         time.sleep(3)
+       
         element1 = driver.find_element_by_xpath("/html/body/div/div/div/div/main/div/div/div/div/div[2]/h1")
         title = element1.text
         element2 = driver.find_element_by_xpath("/html/body/div/div/div/div/main/div/div/div/div/div[2]/div[1]/div[1]/div[2]/div/p")
@@ -63,4 +67,4 @@ def autologin():
 
 
 autologin()
-f.close()
+
